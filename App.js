@@ -13,7 +13,7 @@ const AppContainer = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Welcome' }}
+          options={{ title: 'Welcome', headerShown: false }}
         />
         <Stack.Screen name="Statistics" component={StatisticsScreen} />
       </Stack.Navigator>
