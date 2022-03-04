@@ -15,7 +15,7 @@ const AppContainer = () => {
           component={HomeScreen}
           options={{ title: 'Welcome', headerShown: false }}
         />
-        <Stack.Screen name="Statistics" component={StatisticsScreen} />
+        <Stack.Screen name="Statistics" component={StatisticsScreen} options={{title: new Date().toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

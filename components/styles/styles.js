@@ -1,3 +1,7 @@
+/**
+ * This file holds the global resused class names
+ */
+
 import { Dimensions, StyleSheet } from "react-native";
 
 var {height, width} = Dimensions.get('window');
@@ -12,6 +16,10 @@ export default styles = StyleSheet.create({
     textRight: {
         textAlign: "right"
     },  
+    fullscreen: {
+        height: height,
+        width: width
+    }, 
     rounded: {
         borderRadius: 6
     },
