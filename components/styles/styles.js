@@ -29,8 +29,17 @@ export default styles = StyleSheet.create({
     m1: {
         margin: 8
     },
+    my1: {
+        marginVertical: 8
+    },
     m2: {
         margin: 16
+    },
+    my2: {
+        marginVertical: 16
+    },
+    mb1: {
+        marginBottom: 8
     },
     mb2: {
         marginBottom: 48

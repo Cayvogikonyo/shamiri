@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import moment from 'moment';
 
 import HomeScreen from './screens/HomeScreen';
 import StatisticsScreen from './screens/StatisticsScreen';
@@ -15,7 +16,7 @@ const AppContainer = () => {
           component={HomeScreen}
           options={{ title: 'Welcome', headerShown: false }}
         />
-        <Stack.Screen name="Statistics" component={StatisticsScreen} options={{title: new Date().toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}}/>
+        <Stack.Screen name="Statistics" component={StatisticsScreen} options={{title: moment(new Date()).format('MMM DD, YYYY')}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

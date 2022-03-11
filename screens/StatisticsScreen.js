@@ -10,6 +10,7 @@ import global from '../components/styles/styles'
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native-web';
 import { useAssets } from 'expo-asset';
+import moment from 'moment';
 
 const styles = StyleSheet.create({
     container: {
@@ -63,6 +64,7 @@ export default function Statistics({ navigation }) {
 
     const [weeklyView, setWeeklyView] = useState(false);
     const [dateToday, setDateToday] = useState(new Date().toLocaleDateString("en-US", options));
+    console.log(dateToday)
     const [listData, setListData] = useState([
         { name: "Mental Health", subtitle: "8/10", barlength: 90, backgroundColor: '#F6E9E7' }, 
         { name: "Satisfaction", subtitle: "2.5/10", barlength: 25, backgroundColor: '#E3A89F' }, 
@@ -76,17 +78,22 @@ export default function Statistics({ navigation }) {
      * Toggle the displayed tab screen
      */
     const toggleView = () => {
-        if (!weeklyView) {
+        let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+        if (weeklyView == false) {
+
+            var from = moment(new Date().getTime() - (7 * 24 * 60 * 60 * 1000)).format('MMM DD, YYYY');
+            var to = moment(new Date()).format('MMM DD, YYYY');
+
+            navigation.setOptions({ title: from + ' - ' + to })
+            setDateToday(from + ' - ' + to);
             setWeeklyView(true);
-            setDateToday(new Date().toLocaleDateString("en-US", options))
-            navigation.setOptions({ title: dateToday })
+           
 
         } else {
+            navigation.setOptions({ title: moment(new Date()).format('MMM DD, YYYY')})
+            setDateToday(moment(new Date()).format('MMM DD, YYYY'))
             setWeeklyView(false);
-            var to = new Date().toLocaleDateString("en-US", { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
-            var from = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000)).toLocaleDateString("en-US", { weekday: 'short', month: 'short', day: 'numeric' });
-            setDateToday(from + ' - ' + to);
-            navigation.setOptions({ title: dateToday })
+
         }
     }
 
